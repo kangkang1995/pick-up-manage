@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="home">
   <view class="home-content">
     <view class="home-list" 
       wx:for="{{dataList}}" 
@@ -9,7 +9,26 @@
     >
       <view class="row-box">
         <view class="row-left">姓名</view>
-        <view class="row-right"> <input placeholder="222" value="{{listItem.name}}"/> </view>
+        <view class="row-right"> <input placeholder="222" placeholder-class="row-placeholder" value="{{listItem.name}}"/> </view>
+      </view>
+      <view class="row-box">
+        <view class="row-left">电话</view>
+        <view class="row-right"> <input placeholder="222" placeholder-class="row-placeholder" value="{{listItem.phone}}"/> </view>
+      </view>
+      <view class="row-box">
+        <view class="row-left">车牌号</view>
+        <view class="row-right"> <input placeholder="222" placeholder-class="row-placeholder" value="{{listItem.carNumber}}"/> </view>
+      </view>
+      <view class="row-box">
+        <view class="row-left">车辆吨位</view>
+        <view class="row-right">
+          <picker range="{{selectNumberList}}" value='{{selectNumberValue}}'
+            data-index="{{idx}}"
+            bindchange="_selectValue"
+          >
+            <view class='row-select'>{{selectNumberList[listItem.selectNumberValue]}}</view>
+          </picker>
+        </view>
       </view>
     </view>
   </view>

@@ -1,22 +1,43 @@
+page {
+  background-color: #f1f1f1;
+} 
+.home{
+  
+}
 .home-content{
-  width: 100%;
+  padding: 0 30rpx;
 }
 .home-list{
-  width: 100%;
-  height: 225rpx;
-  background-color: white;
+  margin: 30rpx auto;
+  background-color: #ffffff;
 }
+
+
 .row-box{
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 0 15rpx;
+  align-content: center;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  color: #383838;
 }
 .row-left{
-  width: 33%;
+  width: 220rpx;
   padding-left: 5rpx;
 }
 .row-right{
-  width: 67%;
+  width: 470rpx;
   padding: 0 5rpx;
+}
+.row-right input{
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.row-placeholder{
+  color: #a6a6a6;
+}
+.row-select{
+  color: #a6a6a6;
 }

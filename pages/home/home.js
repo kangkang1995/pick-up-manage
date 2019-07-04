@@ -4,19 +4,22 @@ const app = getApp()
 
 Page({
   data: {
+    selectNumberList: ['2吨', '5吨', '8吨', '10吨', '15吨','15吨以上'],
     dataList:[
-      {name:"",phone:null,carNumber:null,selectNumber:[
-        {index:0,value:"2吨",},
-        { index: 1, value: "5吨", },
-        { index: 2, value: "8吨", },
-        { index: 3, value: "10吨", },
-        { index: 4, value: "15吨", },
-        { index: 5, value: "15吨以上", },
-      ]}
+      { name: "", phone: null, carNumber: null, selectNumberValue: 0},
     ]
   },
   onLoad: function () {
-    
   },
+  _selectValue: function (event){
+    let index = event.currentTarget.dataset.index;
+    let value = event.detail.value;
+    console.log(this.data.dataList)
+    let dataList = JSON.parse(JSON.stringify(this.data.dataList))
+    dataList[index].selectNumberValue = value;
+    this.setData({
+      dataList
+    })
+  }
   
 })

@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="home-content">
+    <view class="home-list" 
+      wx:for="{{dataList}}" 
+      wx:for-index="idx" 
+      wx:for-item="listItem"
+      wx:key="listItem.index"
+    >
+      <view class="row-box">
+        <view class="row-left">姓名</view>
+        <view class="row-right"> <input placeholder="222" value="{{listItem.name}}"/> </view>
+      </view>
+    </view>
+  </view>
+</view>

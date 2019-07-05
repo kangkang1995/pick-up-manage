@@ -1,6 +1,11 @@
 <!--index.wxml-->
 <view class="home">
   <view class="home-content">
+    <view class="row-box print-row">
+      <view class="row-left">提货单打印编号</view>
+      <view class="row-right"> <input placeholder="请填写打印单编号" placeholder-class="row-placeholder" value="{{printNum}}" bindinput="_changePrintNum"/> </view>
+    </view>
+    
     <view class="home-list" 
       wx:for="{{dataList}}" 
       wx:for-index="idx" 
@@ -9,15 +14,20 @@
     >
       <view class="row-box">
         <view class="row-left">姓名</view>
-        <view class="row-right"> <input placeholder="222" placeholder-class="row-placeholder" value="{{listItem.name}}"/> </view>
+        <view class="row-right"> <input placeholder="输入提货人姓名" placeholder-class="row-placeholder" value="{{listItem.name}}"
+        data-type="name" data-index="{{idx}}" bindinput="_changeInput"
+        /> </view>
       </view>
       <view class="row-box">
         <view class="row-left">电话</view>
-        <view class="row-right"> <input placeholder="222" placeholder-class="row-placeholder" value="{{listItem.phone}}"/> </view>
+        <view class="row-right"> <input placeholder="输入提货人电话" placeholder-class="row-placeholder" value="{{listItem.phone}}" 
+        data-type="phone" data-index="{{idx}}" bindinput="_changeInput"/> </view>
       </view>
       <view class="row-box">
         <view class="row-left">车牌号</view>
-        <view class="row-right"> <input placeholder="222" placeholder-class="row-placeholder" value="{{listItem.carNumber}}"/> </view>
+        <view class="row-right"> <input placeholder="输入车牌号" placeholder-class="row-placeholder" value="{{listItem.carNumber}}"
+        data-type="carNumber" data-index="{{idx}}" bindinput="_changeInput"
+        /> </view>
       </view>
       <view class="row-box">
         <view class="row-left">车辆吨位</view>
@@ -31,5 +41,15 @@
         </view>
       </view>
     </view>
+
+    <view>
+      <button bindtap='_addCarNum'>点击新增车辆</button>
+    </view>
+
+     <view>
+      <button bindtap='_submit'>点击提交</button>
+    </view>
+
+
   </view>
 </view>

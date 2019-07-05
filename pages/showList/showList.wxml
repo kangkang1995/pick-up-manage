@@ -1,0 +1,23 @@
+<view class='show-list'>
+  <view class='show-list-box'>
+    <view class='show-list-row'>
+      <view class='show-list-row-left'>运单号</view>
+      <view class='show-list-row-right'>10</view>
+    </view>
+
+    <view class='show-list-row'>
+      <view class='show-list-row-left'>排队序号</view>
+      <view class='show-list-row-right'>10</view>
+    </view>
+
+    <view class='show-list-row'>
+      <view class='show-list-row-left'>工作号</view>
+      <view class='show-list-row-right'>10</view>
+    </view>
+
+    <view class='show-list-row'>
+      <view class='show-list-row-left'>车辆停放</view>
+      <view class='show-list-row-right'>10</view>
+    </view>
+  </view>
+</view>

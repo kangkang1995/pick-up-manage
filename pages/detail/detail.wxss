@@ -1,10 +1,8 @@
 page {
   background-color: #f1f1f1;
 } 
-.home{
-  
-}
-.home-content{
+
+.detail-content{
   padding: 0 30rpx;
 }
 
@@ -40,6 +38,9 @@ page {
 .row-right input{
   height: 80rpx;
   line-height: 80rpx;
+}
+.row-right .row-right-text{
+  
 }
 .row-placeholder{
   color: #a6a6a6;

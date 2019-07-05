@@ -1,0 +1,26 @@
+.show-list-box{
+  width: 750rpx;
+  padding: 0 20rpx;
+}
+
+.show-list-row{
+  width: 710rpx;
+  height: 80rpx;
+  line-height: 78rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  font-size: 32rpx;
+  border: 1px solid #cccccc;
+  margin-bottom: -1px;
+}
+
+.show-list-row-left{
+  width: 220rpx;
+  border-right: 1px solid #cccccc;
+}
+
+.show-list-row-right{
+  width: 490rpx;
+}

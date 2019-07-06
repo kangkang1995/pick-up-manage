@@ -47,3 +47,50 @@ page {
 .row-select{
   color: #a6a6a6;
 }
+
+/* zengjia */
+.add-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 80rpx 0;
+  font-size: 28rpx;
+  color: #7948ea;
+}
+
+.add-img{
+  width:36rpx;
+  height: 36rpx; 
+  margin-right: 20rpx;
+}
+
+.submit-box{
+  
+}
+
+.submit-box button{
+  background-color: #7948ea;
+  color: white;
+}
+
+.pick-row{
+  position: relative;
+  border: 1px solid #cccccc;
+  background-color: white;
+  height: 70rpx;
+  padding:0 30rpx;
+  margin-top:30rpx;
+}
+.pick-row input{
+  width: 90%;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.pick-row-img{
+  width: 42rpx;
+  height: 42rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 14rpx;
+}

@@ -4,11 +4,13 @@ const app = getApp()
 
 Page({
   data: {
-    selectNumberList: ['2吨', '5吨', '8吨', '10吨', '15吨','15吨以上'],
-    printNum:null,
+    selectNumberList: ['2吨', '5吨', '8吨', '10吨', '15吨','15吨以上'], //车辆吨位
+    printNum:null, //打印编号
+    pickUpCode:null, //提货码
     dataList:[
       { name: "", phone: null, carNumber: null, selectNumberValue: 0},
-    ]
+    ],
+    addSrc:'../../images/add.png',
   },
   onLoad: function () {
   },
@@ -51,7 +53,35 @@ Page({
   },
   // 提交 
   _submit:function(){
-    alert('等待协议')
-  }
+    this._showToast('等待协议')
+    
+  },
+  // 扫码
+  _scanCode(){
+    let that = this;
+    wx.scanCode({
+      onlyFromCamera:true,
+      scanType: ['barCode', 'qrCode'],
+      success(res){
+        console.log(res,'res')
+        that._showToast('成功')
+        that.setData({
+          pickUpCode: res.result
+        })
+      },
+      fail(err){
+        console.log(err, 'err')
+      }
+    })
+  },
+  // 提示
+  _showToast: function (text) {
+    wx.showToast({
+      title: text,
+      icon: 'none',
+      duration: 2000,
+      mask: true
+    })
+  },
   
 })

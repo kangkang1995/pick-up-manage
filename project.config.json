@@ -13,7 +13,7 @@
 		"coverView": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.7.3",
 	"appid": "wxc857443c3e6da799",
 	"projectname": "pick-up-manage",
 	"debugOptions": {

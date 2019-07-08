@@ -1,0 +1,37 @@
+page{
+  background-color: #e5e5e5;
+}
+.pick-list-box{
+  
+}
+
+.pick-list-box-list{
+  
+}
+
+.pick-list-box-list-box{
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20rpx 0;
+  font-size: 32rpx;
+}
+
+.pick-list-box-list-left{
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  background-color: #7948ea;
+  color: white;
+  margin: 0 20rpx;
+  font-size: 24rpx;
+}
+
+.pick-list-box-list-cent{
+  width: 150rpx;
+}

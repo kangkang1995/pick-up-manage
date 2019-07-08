@@ -1,0 +1,14 @@
+<view class='pick-list-box'>
+  <view class='pick-list-box-list'
+    wx:for="{{pickUpCodeList}}" 
+    wx:for-index="idx" 
+    wx:for-item="listItem"
+    wx:key="idx"
+  >
+    <view bindtap='_linkDetail' data-index='{{idx}}' class='pick-list-box-list-box'>
+      <view class='pick-list-box-list-left'>{{idx + 1}}</view>
+      <view class='pick-list-box-list-cent'>提货码{{idx + 1}}</view>
+      <view>{{listItem.value}}</view>
+    </view>
+  </view>
+</view>

@@ -9,8 +9,16 @@ page {
 }
 
 .print-row{
+  position: relative;
   background-color: #ffffff;
+}
+
+.print-row:nth-child(1){
   margin-top: 30rpx;
+}
+
+.print-row input{
+  padding-right: 24rpx;
 }
 
 .home-list{
@@ -92,5 +100,9 @@ page {
   height: 42rpx;
   position: absolute;
   right: 20rpx;
-  top: 14rpx;
+  top: 18rpx;
+}
+
+.add-print-box{
+  margin: 30rpx 0;
 }

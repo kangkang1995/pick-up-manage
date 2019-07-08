@@ -1,6 +1,17 @@
 .show-list-box{
-  width: 750rpx;
   padding: 0 20rpx;
+}
+
+.show-list-title{
+  color: #505050;
+  font-size: 32rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  padding-left: 30rpx;
+  border-left: 3px solid #7948ea;
+  margin-bottom: 10rpx;
+  margin-top: 20rpx;
+  font-weight: bold;
 }
 
 .show-list-row{

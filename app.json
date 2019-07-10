@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/home/home",
     "pages/showPickList/showPickList",
     "pages/showPickListDetail/showPickListDetail",
     "pages/detail/detail",
-    "pages/index/index",
+    
     "pages/logs/logs"
   ],
   "window": {

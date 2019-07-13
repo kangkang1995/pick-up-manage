@@ -1,0 +1,12 @@
+/* component/header/header.wxss */
+.all-header{
+  width: 100%;
+  background-color: #fff;
+  height: 100rpx;
+  text-align: center;
+}
+
+.all-header-text{
+  font-size: 30rpx;
+  color: #505050;
+}

@@ -1,0 +1,47 @@
+page {
+  background-color: #f1f1f1;
+} 
+
+.gatekeeper{
+
+}
+
+.gatekeeper-box{
+  margin: 40rpx 0;
+  padding: 0 20rpx;
+}
+
+.gatekeeper-list{
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30rpx 20rpx; 
+}
+
+.gatekeeper-list-left{
+  width: 200rpx;
+  text-align: center;
+}
+
+.gatekeeper-list-right{
+  margin-left: 20rpx;
+}
+
+.gatekeeper-list-right>view{
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.code-btn{
+  position: fixed;
+  bottom: 0;
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #7948ea;
+  color: white;
+  text-align: center;
+}

@@ -1,0 +1,28 @@
+<view class='gatekeeper'>
+  <view class='gatekeeper-box'>
+    <view class='gatekeeper-list'>
+      <view class='gatekeeper-list-left'>
+       <icon type="success" size="60"/>
+      </view>
+      <view class='gatekeeper-list-right'>
+        <view class='gatekeeper-list-right-row'>该车辆已通过提货申请 </view>
+        <view>
+        车牌号：豫A12345
+        </view>
+        <view>
+        车辆吨位：5T
+        </view>
+        <view>
+        停车位置：西广场
+        </view>
+        <view>
+        提货时间：8：1
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='code-btn'>
+      点击扫码
+  </view>
+</view>

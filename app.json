@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/gatekeeper/gatekeeper",
     "pages/home/home",
+    "pages/index/index",
     "pages/showPickList/showPickList",
     "pages/showPickListDetail/showPickListDetail",
     "pages/detail/detail",

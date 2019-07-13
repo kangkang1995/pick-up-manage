@@ -1,0 +1,6 @@
+<!--component/header/header.wxml-->
+<view class='all-header'>
+  <text class='all-header-text'>
+    中远海运空运提货管理系统
+  </text>
+</view>

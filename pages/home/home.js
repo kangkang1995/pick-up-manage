@@ -48,18 +48,30 @@ Page({
   // 增加 提货码
   _addPrint(){
     let pickUpCodeList = JSON.parse(JSON.stringify(this.data.pickUpCodeList));
-    pickUpCodeList.push({ value:'' })
-    this.setData({
-      pickUpCodeList
-    })
+    let dataList = this.data.dataList;
+    if (dataList.length <= 1){
+      pickUpCodeList.push({ value: '' })
+      this.setData({
+        pickUpCodeList
+      })
+    }else{
+      this._showToast('不允许添加')
+    }
+    
   },
   // 增加 车辆
   _addCarNum: function(){
     let dataList = JSON.parse(JSON.stringify(this.data.dataList));
-    dataList.push({ name: "", phone: null, carNumber: null, selectNumberValue: 0},)
-    this.setData({
-      dataList
-    })
+    let pickUpCodeList = this.data.pickUpCodeList;
+    if (pickUpCodeList.length <= 1){
+      dataList.push({ name: "", phone: null, carNumber: null, selectNumberValue: 0 })
+      this.setData({
+        dataList
+      })
+    }else{
+      this._showToast('不允许添加')
+    }
+    
   },
   // 提交 
   _submit:function(){

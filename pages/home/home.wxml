@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="home">
+  <header/>
   <view class="home-content">
     <!-- <view class="row-box pick-row">
       <input placeholder="输入提货码" placeholder-class="row-placeholder" value="{{pickUpCode}}" bindinput="_changePrintNum"/>

@@ -48,3 +48,7 @@ page {
 .row-select{
   color: #a6a6a6;
 }
+
+.delivery-order-code{
+  background-color: white;
+}

@@ -1,18 +1,42 @@
 //index.js
 //获取应用实例
 const app = getApp()
+import { deliveryFormSelectByUserid } from "../../utils/getData.js"
 
 Page({
   data: {
-    selectNumberList: ['2吨', '5吨', '8吨', '10吨', '15吨', '15吨以上'],
-    printNum: 22,
-    dataList: [
-      { name: "dasdad", phone: 12121212, carNumber: 2, selectNumberValue: 0 },
-    ]
+    detailData:{},
   },
   
   onLoad: function () {
     
   },
+
+  onShow:function(){
+    this.getDataDetail()
+  },
+
+  getDataDetail:function(){
+    let userid = '1';
+    deliveryFormSelectByUserid(userid)
+    .then(
+      res=>{
+        console.log(JSON.stringify(res),'res')
+        if (res.data.code === 200) {
+          this.setData({
+            detailData: res.data.data
+          })
+        } else {
+          this._showToast(res.data.message)
+        }
+      }
+    )
+    .catch(
+      err=>{
+        console.log(err,'err')
+      }
+    )
+  }
+
   
 })

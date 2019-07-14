@@ -106,3 +106,52 @@ page {
 .add-print-box{
   margin: 30rpx 0;
 }
+
+
+/* 详情 */
+.detail-content{
+  padding: 0 30rpx;
+}
+
+.print-row{
+  background-color: #ffffff;
+  margin-top: 30rpx;
+}
+
+.home-list{
+  margin: 30rpx auto;
+  background-color: #ffffff;
+}
+
+
+.row-box{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  color: #383838;
+}
+.row-left{
+  width:40%;
+  padding-left: 5rpx;
+}
+.row-right{
+  width: 60%;
+  padding: 0 5rpx;
+}
+.row-right input{
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.row-right .row-right-text{
+  
+}
+.row-placeholder{
+  color: #a6a6a6;
+}
+.row-select{
+  color: #a6a6a6;
+}

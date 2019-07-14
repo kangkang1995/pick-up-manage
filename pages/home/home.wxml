@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="home">
   <header/>
-  <view class="home-content">
+  <view class="home-content" wx:if="{{!showDetail}}">
     <!-- <view class="row-box pick-row">
       <input placeholder="输入提货码" placeholder-class="row-placeholder" value="{{pickUpCode}}" bindinput="_changePrintNum"/>
       <image bindtap='_scanCode' class='pick-row-img' src='../../images/shaoma.png'></image>
@@ -32,18 +32,18 @@
       wx:key="idx"
     >
       <view class="row-box">
-        <view class="row-left">姓名</view>
+        <view class="row-left">提货人姓名</view>
         <view class="row-right"> <input placeholder="输入提货人姓名" placeholder-class="row-placeholder" value="{{listItem.name}}"
         data-type="name" data-index="{{idx}}" bindinput="_changeInput"
         /> </view>
       </view>
       <view class="row-box">
-        <view class="row-left">电话</view>
+        <view class="row-left">提货人电话</view>
         <view class="row-right"> <input placeholder="输入提货人电话" placeholder-class="row-placeholder" value="{{listItem.phone}}" 
         data-type="phone" data-index="{{idx}}" bindinput="_changeInput"/> </view>
       </view>
       <view class="row-box">
-        <view class="row-left">车牌号</view>
+        <view class="row-left">承运车牌号</view>
         <view class="row-right"> <input placeholder="输入车牌号" placeholder-class="row-placeholder" value="{{listItem.carNumber}}"
         data-type="carNumber" data-index="{{idx}}" bindinput="_changeInput"
         /> </view>
@@ -77,5 +77,94 @@
     </view>
 
 
+  </view>
+  <!-- 提交成功之后的详情 -->
+  <view  wx:if="{{showDetail}}">
+    <view class='detail-box'>
+      <view class='detail-content'>
+        <view 
+          wx:for="{{detailData.deliveryOrders}}" 
+          wx:for-index="idx" 
+          wx:for-item="listItem"
+          wx:key="listItem.id"
+        >
+          <view class="row-box print-row">
+            <view class="row-left">提货单编号</view>
+            <view class="row-right"> 
+              <text class='row-right-text'>{{listItem.deliveryOrderCode}}</text>
+            </view>
+          </view>
+
+          <view class="home-list" 
+            wx:for="{{listItem.deliveryDivideOrders}}" 
+            wx:for-index="idx" 
+            wx:for-item="newListItem"
+            wx:key="newListItem.id"
+          >
+            <view class="row-box">
+              <view class="row-left">查询编号</view>
+              <view class="row-right"> <text>{{newListItem.queryCode}}</text></view>
+            </view>
+
+            <view class="row-box">
+              <view class="row-left">总运单号</view>
+              <view class="row-right"> <text>{{newListItem.totalWaybillNo}}</text></view>
+            </view>
+
+            <view class="row-box">
+              <view class="row-left">分运单号</view>
+              <view class="row-right"> <text>{{newListItem.separatelyWaybillNo}}</text></view>
+            </view>
+
+            <view class="row-box">
+              <view class="row-left">件数</view>
+              <view class="row-right"> <text>{{newListItem.number}}</text></view>
+            </view>
+
+            <view class="row-box">
+              <view class="row-left">重量</view>
+              <view class="row-right"> <text>{{newListItem.weight}}</text></view>
+            </view>
+
+            <view class="row-box">
+              <view class="row-left">包装</view>
+              <view class="row-right"> <text>{{newListItem.packing}}</text></view>
+            </view>
+
+          </view>
+        </view>
+
+        <view class="home-list" 
+          wx:for="{{detailData.deliveryCars}}" 
+          wx:for-index="idx" 
+          wx:for-item="listItem"
+          wx:key="listItem.index"
+        >
+          <view class="row-box">
+            <view class="row-left">提货人姓名</view>
+            <view class="row-right"> <text>{{listItem.driverName}}</text></view>
+          </view>
+          <view class="row-box">
+            <view class="row-left">提货人电话</view>
+            <view class="row-right"> <text>{{listItem.driverPhone}}</text></view>
+          </view>
+          <view class="row-box">
+            <view class="row-left">承运车牌号</view>
+            <view class="row-right"><text>{{listItem.carNo}}</text> </view>
+          </view>
+          <view class="row-box">
+            <view class="row-left">提货单位</view>
+            <view class="row-right"><text>{{listItem.deliveryDepartment}}</text> </view>
+          </view>
+          <view class="row-box">
+            <view class="row-left">车辆吨位</view>
+            <view class="row-right">
+              <text>{{listItem.carTons}}</text> 
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
   </view>
 </view>

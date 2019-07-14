@@ -1,41 +1,75 @@
 <view class='detail-box'>
   <view class='detail-content'>
     <view class="row-box print-row">
-      <view class="row-left">提货单打印编号</view>
+      <view class="row-left">提货口</view>
       <view class="row-right"> 
-        <text class='row-right-text'>{{printNum}}</text>
+        <text class='row-right-text'>{{detailData.areaName}}</text>
+      </view>
+    </view>
+    
+    <view class='"home-list'>
+      <view class="row-box">
+        <view class="row-left">到达时间</view>
+        <view class="row-right"> <text v-if="{{detailData.orders}}">{{detailData.orders[0].deliveryTime}}</text></view>
+      </view>
+
+      <view class="row-box">
+        <view class="row-left">排队序号</view>
+        <view class="row-right"> <text>等字段</text></view>
       </view>
     </view>
 
-    <view class="home-list" 
-      wx:for="{{dataList}}" 
+    <view 
+      wx:for="{{detailData.orders}}" 
       wx:for-index="idx" 
       wx:for-item="listItem"
       wx:key="listItem.index"
     >
-      <view class="row-box">
-        <view class="row-left">姓名</view>
-        <view class="row-right"> <text>{{listItem.name}}</text></view>
+      <view class="row-box delivery-order-code">
+        <view class="row-left">提货单编号</view>
+        <view class="row-right"> <text>{{listItem.deliveryOrderCode}}</text></view>
       </view>
-      <view class="row-box">
-        <view class="row-left">电话</view>
-        <view class="row-right"> <text>{{listItem.phone}}</text></view>
-      </view>
-      <view class="row-box">
-        <view class="row-left">车牌号</view>
-        <view class="row-right"><text>{{listItem.carNumber}}</text> </view>
-      </view>
-      <view class="row-box">
-        <view class="row-left">车辆吨位</view>
-        <view class="row-right">
-          <text>{{listItem.selectNumberValue}}</text> 
+
+      <view class="home-list" 
+        wx:for="{{listItem.divideOrders}}" 
+        wx:for-index="idx" 
+        wx:for-item="newListItem"
+        wx:key="newListItem.id"
+      >
+        <view class="row-box">
+          <view class="row-left">查询编号</view>
+          <view class="row-right"> <text>{{newListItem.queryCode}}</text></view>
         </view>
+
+        <view class="row-box">
+          <view class="row-left">总运单号</view>
+          <view class="row-right"> <text>{{newListItem.totalWaybillNo}}</text></view>
+        </view>
+
+        <view class="row-box">
+          <view class="row-left">分运单号</view>
+          <view class="row-right"> <text>{{newListItem.separatelyWaybillNo}}</text></view>
+        </view>
+
+        <view class="row-box">
+          <view class="row-left">件数</view>
+          <view class="row-right"> <text>{{newListItem.number}}</text></view>
+        </view>
+
+        <view class="row-box">
+          <view class="row-left">重量</view>
+          <view class="row-right"> <text>{{newListItem.weight}}</text></view>
+        </view>
+
+        <view class="row-box">
+          <view class="row-left">包装</view>
+          <view class="row-right"> <text>{{newListItem.packing}}</text></view>
+        </view>
+
       </view>
+
     </view>
 
   </view>
 
-  <view>
-    <button>撤销申请</button>
-  </view>
 </view>

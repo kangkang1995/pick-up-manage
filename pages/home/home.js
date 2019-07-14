@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+import { deliveryFormAdd } from "../../utils/getData.js"
 
 Page({
   data: {
@@ -13,6 +14,9 @@ Page({
       { name: "", phone: null, carNumber: null, unit:null, selectNumberValue: 0},
     ],
     addSrc:'../../images/add.png',
+    userid:1,//用户识别码
+    showDetail:false, // 是否展示详情
+    detailData:{},
   },
   onLoad: function () {
   },
@@ -75,10 +79,63 @@ Page({
   },
   // 提交 
   _submit:function(){
-    this._showToast('等待协议')
-    wx.redirectTo({
-      url: "../detail/detail",
+    let fromData = {};
+    let deliveryCarVos = [];
+    let dataList = JSON.parse(JSON.stringify(this.data.dataList));
+    let selectNumberList = this.data.selectNumberList;
+    let delivery_order_codes = [];
+    let pickUpCodeList = this.data.pickUpCodeList; 
+    let userid = this.data.userid;//用户识别符
+
+    for (let i = 0; i < dataList.length; i++){
+      if (!this._regFunction(Number(dataList[i].phone), /^1[0-9]\d{9}$/)){
+        this._showToast('手机号格式不正确')
+        return
+      }
+    }
+
+    dataList.map(function(listItem,index){
+      deliveryCarVos[index]={
+        carNo: listItem.carNumber,
+        carTons: selectNumberList[listItem.selectNumberValue],
+        deliveryDepartment: listItem.unit,
+        driverName:listItem.name,
+        driverPhone:listItem.phone,
+      }
     })
+    pickUpCodeList.map(function(listItem,index){
+      delivery_order_codes[index] = listItem.value;
+    })
+
+    fromData={
+      deliveryCarVos,
+      delivery_order_codes,
+      userid
+    };
+    deliveryFormAdd(fromData)
+    .then(
+      res=>{
+        if (res.data.code === 200) {
+          this._showToast("提交成功")
+          this.setData({
+            showDetail:true,
+            detailData: res.data.data,
+          })
+        }else{
+          this._showToast(res.data.message)
+        }
+      }
+    )
+    .catch(
+      err=>{
+        console.log(err, "err")
+      }
+    )
+    
+    // this._showToast('等待协议')
+    // wx.redirectTo({
+    //   url: "../detail/detail",
+    // })
     
   },
   // 扫码
@@ -90,7 +147,6 @@ Page({
       onlyFromCamera:true,
       scanType: ['barCode', 'qrCode'],
       success(res){
-        console.log(res,'res')
         that._showToast('成功')
         pickUpCodeList[index].value = "";
         pickUpCodeList[index].value = res.result;
@@ -112,5 +168,13 @@ Page({
       mask: true
     })
   },
+
+  _regFunction : function(value, reg){
+    if (reg.test(value)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   
 })

@@ -11,3 +11,5 @@ export const deliveryFormSelectByUserid = (userid) => service('/delivery/form/se
 
 // 门卫扫码
 export const deliveryOrderDetail = (code) => service('/delivery/order/detail?code=' + code, {}, 'POST');
+// 确认到达
+export const deliveryOrderConfirmArrive = (code) => service('/delivery/order/confirmArrive?code=' + code, {}, 'POST');

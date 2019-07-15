@@ -1,18 +1,51 @@
 <view class='gatekeeper'>
-  <view class='gatekeeper-box'>
+  <view class='gatekeeper-box' wx-if="{{isDetailData}}">
     <!-- 成功 -->
-    <view class='new-box'  wx-if="{{!passed}}">
-      <view class='new-box-head'>
-        <view class='new-box-head-icon'>
-          <icon type="success" size="60"/>
+    <view class='new-box'>
+      <block  wx-if="{{passed}}">
+        <view class='new-box-head'>
+          <view class='new-box-head-icon'>
+            <icon type="success" size="60"/>
+          </view>
+          <view class='gatekeeper-list-right-row-title'>该车辆已通过提货申请 </view>
         </view>
-        <view class='gatekeeper-list-right-row-title'>该车辆已通过提货申请 </view>
-      </view>
+      </block>
+      <!-- 失败 -->
+      <block  wx-if="{{unsubmitted}}">
+        <view class='new-box-head'>
+          <view class='new-box-head-icon'>
+            <icon type="cancel" size="60"/>
+          </view>
+          <view class='gatekeeper-list-right-row-title'>该车辆未提交提货申请 </view>
+        </view>
+      </block>
+
+
+      <block  wx-if="{{underReview}}">
+        <view class='new-box-head'>
+          <view class='new-box-head-icon'>
+            <icon type="warn" color="#ff9900" size="60"/>
+          </view>
+          <view class='gatekeeper-list-right-row-title'>该车辆提货申请审核中 </view>
+        </view>
+      </block>
+      
       <view class='new-box-cent 
         wx:for="{{detailData.cars}}" 
         wx:for-index="idx" 
         wx:for-item="listItem"
         wx:key="listItem.index"
+      >
+        <view>
+        车牌号：{{listItem.carNo?listItem.carNo:'暂无'}}
+        </view>
+        <view>
+        车辆吨位：{{listItem.carTons?listItem.carTons:'暂无'}}
+        </view>
+      </view>
+
+      <view class='new-box-cent 
+        wx-if="{{!detailData.cars}}"
       >
         <view>
         车牌号：{{listItem.carNo?listItem.carNo:'暂无'}}
@@ -32,48 +65,10 @@
       </view>
     </view>
 
-    <!-- 失败 -->
-    <view class='gatekeeper-list' wx-if="{{unsubmitted}}">
-      <view class='gatekeeper-list-left'>
-       <icon type="cancel" size="60"/>
-      </view>
-      <view class='gatekeeper-list-right'>
-        <view class='gatekeeper-list-right-row-title'>该车辆未提交提货申请 </view>
-        <view>
-        车牌号：-
-        </view>
-        <view>
-        车辆吨位：-
-        </view>
-        <view>
-        停车位置：-
-        </view>
-      </view>
-    </view>
-
-    <!-- 审核中 -->
-    <view class='gatekeeper-list' wx-if="{{underReview}}">
-      <view class='gatekeeper-list-left'>
-       <icon type="warn" color="#ff9900" size="60"/>
-      </view>
-      <view class='gatekeeper-list-right'>
-        <view class='gatekeeper-list-right-row-title'>该车辆提货申请审核中 </view>
-        <view>
-        车牌号：豫A123456
-        </view>
-        <view>
-        车辆吨位：5T
-        </view>
-        <view>
-        停车位置：-
-        </view>
-      </view>
-    </view>
-
   </view>
 
   <view>
-    <button class='suregetto' wx-if="{{sureCompass}}">确认到达</button>
+    <button class='suregetto' wx-if="{{sureCompass}}" bindtap='_confirmArrive'>确认到达</button>
     <button class='surepickup' wx-if="{{surePickUp}}">确认提货</button>
   </view>
 

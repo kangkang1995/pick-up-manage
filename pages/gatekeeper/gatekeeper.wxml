@@ -69,7 +69,7 @@
 
   <view>
     <button class='suregetto' wx-if="{{sureCompass}}" bindtap='_confirmArrive'>确认到达</button>
-    <button class='surepickup' wx-if="{{surePickUp}}">确认提货</button>
+    <button class='surepickup' wx-if="{{surePickUp}}" bindtap='_confirmDelivery'>确认提货</button>
   </view>
 
   <view class='code-btn' bindtap='_scanCode'>

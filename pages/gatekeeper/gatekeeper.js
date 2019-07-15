@@ -1,5 +1,5 @@
 //logs.js
-import { deliveryOrderDetail,deliveryOrderConfirmArrive } from "../../utils/getData.js";
+import { deliveryOrderDetail,deliveryOrderConfirmArrive,deliveryOrderConfirmDelivery } from "../../utils/getData.js";
 
 Page({
   data: {
@@ -57,6 +57,11 @@ Page({
               })
             }
             
+          } else if (res.data.data.deliveryOrderState === 3){
+            this._showToast('该提货单已提货')
+            this.setData({
+              isDetailData:false,
+            })
           }
           this.setData({
             detailData: res.data.data,
@@ -92,6 +97,7 @@ Page({
           this.setData({
             sureCompass: false,
             passed: false,
+            isDetailData: false,
           })
         }else{
           this._showToast(res.data.message)
@@ -103,6 +109,32 @@ Page({
         console.log(err, 'err')
       }
     )
+  },
+
+  // 确认 提货
+  _confirmDelivery() {
+    let datailCode = this.data.datailCode;
+    deliveryOrderConfirmDelivery(datailCode)
+      .then(
+        res => {
+          console.log(JSON.stringify(res), 'res')
+          if (res.data.code === 200) {
+            this._showToast('操作成功')
+            this.setData({
+              surePickUp: false,
+              passed: false,
+              isDetailData: false,
+            })
+          } else {
+            this._showToast(res.data.message)
+          }
+        }
+      )
+      .catch(
+        err => {
+          console.log(err, 'err')
+        }
+      )
   },
 
   // 提示

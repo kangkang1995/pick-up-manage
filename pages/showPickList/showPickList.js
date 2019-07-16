@@ -8,10 +8,17 @@ Page({
   onLoad: function () {
 
   },
+  onShow(){
+    
+  },
+  // shang la
+  onReachBottom(){
+    console.log(1)
+  },
   _linkDetail(event){
     let index = event.currentTarget.dataset.index;
     wx.navigateTo({
-      url: `../showPickListDetail/showPickListDetail?id=${index}`,
+      url: `../showPickListDetail/showPickListDetail?id=${index+1}`,
     })
   }
 })

@@ -15,3 +15,12 @@ export const deliveryOrderDetail = (code) => service('/delivery/order/detail?cod
 export const deliveryOrderConfirmArrive = (code) => service('/delivery/order/confirmArrive?code=' + code, {}, 'POST');
 // 确认 提货
 export const deliveryOrderConfirmDelivery = (code) => service('/delivery/order/confirmDelivery?code=' + code, {}, 'POST');
+
+
+// 发货员
+
+// 详情
+export const deliveryFormGetdetail = (formid) => service('/delivery/form/getdetail?formid=' + formid, {}, 'POST');
+
+// 完成备货
+export const deliveryFormStock = (formid) => service('/delivery/form/stock?formid=' + formid, {}, 'POST');

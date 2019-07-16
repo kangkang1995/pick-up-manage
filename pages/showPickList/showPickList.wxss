@@ -14,7 +14,6 @@ page{
   line-height: 80rpx;
   background-color: white;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   margin: 20rpx 0;
   font-size: 32rpx;
@@ -33,5 +32,12 @@ page{
 }
 
 .pick-list-box-list-cent{
+  width: 520rpx;
+  overflow:hidden; 
+  text-overflow:ellipsis; 
+  white-space:nowrap; 
+}
+
+.pick-list-box-list-right{
   width: 150rpx;
 }

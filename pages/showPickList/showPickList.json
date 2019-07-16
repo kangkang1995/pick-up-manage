@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "提货小程序",
+  "onReachBottomDistance":50,
   "usingComponents": {}
 }

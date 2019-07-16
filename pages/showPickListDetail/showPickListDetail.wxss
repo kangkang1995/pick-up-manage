@@ -34,4 +34,18 @@
 
 .show-list-row-right{
   width: 490rpx;
+  overflow:hidden; 
+  text-overflow:ellipsis; 
+  white-space:nowrap; 
+  padding:0 15rpx;
+}
+
+.bottom-40{
+  margin-bottom: 40rpx;
+}
+
+.surepickup{
+  color: white;
+  background-color: #7948ea;
+  margin: 20rpx 0;
 }

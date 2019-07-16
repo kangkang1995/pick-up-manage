@@ -1,27 +1,94 @@
 <view class='show-list'>
-  <view class='show-list-box'>
+  <view class='show-list-box' 
+    wx:for="{{detailDate.orders}}" 
+    wx:for-index="idx" 
+    wx:for-item="listItem"
+    wx:key="idx"
+  >
     <view class='show-list-title'>
       <text>运单信息</text>
     </view>
-
-    <view class='show-list-row'>
-      <view class='show-list-row-left'>运单号</view>
-      <view class='show-list-row-right'>10</view>
+    <view class="show-list-row bottom-40">
+      <view class="show-list-row-left">提货单编号</view>
+      <view class="show-list-row-right"> <text>{{listItem.deliveryOrderCode}}</text></view>
     </view>
 
-    <view class='show-list-row'>
-      <view class='show-list-row-left'>排队序号</view>
-      <view class='show-list-row-right'>10</view>
-    </view>
+    <view
+      wx:for="{{listItem.divideOrders}}" 
+      wx:for-index="newIdx" 
+      wx:for-item="newListItem"
+      wx:key="newIdx"
+    >
+      <view class='show-list-title'>
+        <text>货品信息</text>
+      </view>
+      <view class='bottom-40'>
+        <view class="show-list-row">
+          <view class="show-list-row-left">查询编号</view>
+          <view class="show-list-row-right"> <text>{{newListItem.queryCode}}</text></view>
+        </view>
 
-    <view class='show-list-row'>
-      <view class='show-list-row-left'>工作号</view>
-      <view class='show-list-row-right'>10</view>
-    </view>
+        <view class="show-list-row">
+          <view class="show-list-row-left">总运单号</view>
+          <view class="show-list-row-right"> <text>{{newListItem.totalWaybillNo}}</text></view>
+        </view>
 
-    <view class='show-list-row'>
-      <view class='show-list-row-left'>车辆停放</view>
-      <view class='show-list-row-right'>10</view>
+        <view class="show-list-row">
+          <view class="show-list-row-left">分运单号</view>
+          <view class="show-list-row-right"> <text>{{newListItem.separatelyWaybillNo}}</text></view>
+        </view>
+
+        <view class="show-list-row">
+          <view class="show-list-row-left">件数</view>
+          <view class="show-list-row-right"> <text>{{newListItem.number}}</text></view>
+        </view>
+
+        <view class="show-list-row">
+          <view class="show-list-row-left">重量</view>
+          <view class="show-list-row-right"> <text>{{newListItem.weight}}</text></view>
+        </view>
+
+        <view class="show-list-row">
+          <view class="show-list-row-left">包装</view>
+          <view class="show-list-row-right"> <text>{{newListItem.packing}}</text></view>
+        </view>
+      </view> 
+
+
     </view>
   </view>
+
+  <view class='show-list-box'>
+    <view class='show-list-title'>
+      <text>车辆信息</text>
+    </view>
+
+    <view class='bottom-40'>
+      <view class="show-list-row">
+        <view class="show-list-row-left">车辆停放</view>
+        <view class="show-list-row-right"> <text>{{detailDate.areaName}}</text></view>
+      </view>
+      <view class="show-list-row">
+        <view class="show-list-row-left">预计进场时间</view>
+        <view class="show-list-row-right"> <text>{{detailDate.deliveryTime}}</text></view>
+      </view>
+
+      <view
+        wx:for="{{detailDate.drivers}}" 
+        wx:for-index="newIdx" 
+        wx:for-item="newListItem"
+        wx:key="newIdx"
+      >
+        <view class="show-list-row">
+          <view class="show-list-row-left">车辆信息{{newIdx+1}}</view>
+          <view class="show-list-row-right"> <text>{{newListItem.driverName}} {{newListItem.carNo}} {{newListItem.driverPhone}}</text></view>
+        </view>
+      </view>
+    </view>
+
+    <view wx-if="{{detailDate.stockState === 0}}">
+      <button class='surepickup' bindtap='_confirmDelivery'>完成备货</button>
+    </view>
+  </view>
+
 </view>

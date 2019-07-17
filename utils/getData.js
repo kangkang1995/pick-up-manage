@@ -18,6 +18,7 @@ export const deliveryOrderConfirmDelivery = (code) => service('/delivery/order/c
 
 
 // 发货员
+export const deliveryFormByStaffUserId = (userid) => service('/delivery/form/selectByStaffUserId?userid=' + userid, {}, 'POST');
 
 // 详情
 export const deliveryFormGetdetail = (formid) => service('/delivery/form/getdetail?formid=' + formid, {}, 'POST');

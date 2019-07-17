@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "提货小程序",
   "onReachBottomDistance":50,
+  "enablePullDownRefresh":true,
   "usingComponents": {}
 }

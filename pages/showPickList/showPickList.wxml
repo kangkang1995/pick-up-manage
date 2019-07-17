@@ -1,16 +1,30 @@
 <view class='pick-list-box'>
   <view class='pick-list-box-list'
-    wx:for="{{pickUpCodeList}}" 
+    wx:for="{{detailDate}}" 
     wx:for-index="idx" 
     wx:for-item="listItem"
     wx:key="idx"
   >
     <view bindtap='_linkDetail' data-index='{{idx}}' class='pick-list-box-list-box'>
       <view class='pick-list-box-list-left'>{{idx + 1}}</view>
-      <view class='pick-list-box-list-cent'>{{listItem.value}}</view>
-      <view class='pick-list-box-list-right'>
-        司机超时
+      <view class='pick-list-box-list-cent'>
+        <block
+          wx:for="{{listItem.orders}}" 
+          wx:for-index="idxs" 
+          wx:for-item="newListItem"
+          wx:key="idxs"
+        >
+        {{newListItem.deliveryOrderCode}},
+        </block>
       </view>
+      <view class='pick-list-box-list-right' wx-if="{{listItem.stockState=== 0}}">
+        {{listItem.timeout?"司机超时":"未完成"}}
+      </view>
+
+      <view class='pick-list-box-list-right' wx-if="{{listItem.stockState=== 1}}">
+        已完成
+      </view>
+
     </view>
   </view>
 </view>

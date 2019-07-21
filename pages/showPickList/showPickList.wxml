@@ -5,7 +5,7 @@
     wx:for-item="listItem"
     wx:key="idx"
   >
-    <view bindtap='_linkDetail' data-index='{{idx}}' class='pick-list-box-list-box'>
+    <view bindtap='_linkDetail' data-id='{{listItem.id}}' class='pick-list-box-list-box'>
       <view class='pick-list-box-list-left'>{{idx + 1}}</view>
       <view class='pick-list-box-list-cent'>
         <block

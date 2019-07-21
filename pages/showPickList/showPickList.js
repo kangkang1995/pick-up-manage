@@ -37,9 +37,9 @@ Page({
     )
   },
   _linkDetail(event){
-    let index = event.currentTarget.dataset.index;
+    let id = event.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `../showPickListDetail/showPickListDetail?id=${index+1}`,
+      url: `../showPickListDetail/showPickListDetail?id=${id}`,
     })
   },
   _isTimeOut(newTime){

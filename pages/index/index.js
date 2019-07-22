@@ -18,6 +18,7 @@ Page({
   onLoad: function () {
     
     if (app.globalData.userInfo) {
+      console.log(app.globalData.userInfo)
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
@@ -51,6 +52,28 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  _login(){
+    let that = this;
+    wx.login({
+      success(res) {
+        console.log(res)
+        that.setData({
+          motto: res.code
+        })
+        // if (res.code) {
+        //   //发起网络请求
+        //   wx.request({
+        //     url: 'https://test.com/onLogin',
+        //     data: {
+        //       code: res.code
+        //     }
+        //   })
+        // } else {
+        //   console.log('登录失败！' + res.errMsg)
+        // }
+      }
     })
   }
 })

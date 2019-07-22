@@ -9,13 +9,13 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
+		"autoAudits": true,
 		"checkInvalidKey": true,
 		"coverView": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.3",
-	"appid": "wxc857443c3e6da799",
+	"appid": "wxe26a132b2058158c",
 	"projectname": "pick-up-manage",
 	"debugOptions": {
 		"hidedInDevtools": []

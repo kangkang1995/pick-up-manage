@@ -1,5 +1,10 @@
 import { service } from './service.js';
 
+// 微信登录
+export const wxUserCode = (code) => service('/wx/user/miniProgramlogin?code=' + code, {}, 'POST');
+
+export const wxRefreshUserInfo = (userid) => service('/wx/user/refreshUserInfo?userid=' + userid, {}, 'POST');
+
 // 绑定提货单，填写车辆信息
 export const deliveryFormAdd = (param) => service('/delivery/form/add', param, 'POST');
 // 获取 绑定提货单，填写车辆信息 的详情

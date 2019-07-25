@@ -34,7 +34,7 @@ page {
   height: 80rpx;
   line-height: 80rpx;
   padding: 0 30rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #383838;
 }
 .row-left{
@@ -62,7 +62,7 @@ page {
   justify-content: center;
   align-items: center;
   margin: 80rpx 0;
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #7948ea;
 }
 
@@ -131,7 +131,7 @@ page {
   height: 80rpx;
   line-height: 80rpx;
   padding: 0 30rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #383838;
 }
 .row-left{

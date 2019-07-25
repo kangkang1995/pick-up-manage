@@ -18,6 +18,17 @@ Page({
     showDetail:false, // 是否展示详情
     detailData:{},
   },
+  onShow() {
+    let that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success(res) {
+        that.setData({
+          userid: res.data.id,
+        })
+      }
+    })
+  },
   onLoad: function () {
   },
   // 改变 提货单号
@@ -86,7 +97,6 @@ Page({
     let delivery_order_codes = [];
     let pickUpCodeList = this.data.pickUpCodeList; 
     let userid = this.data.userid;//用户识别符
-
     for (let i = 0; i < dataList.length; i++){
       if (!this._regFunction(Number(dataList[i].phone), /^1[0-9]\d{9}$/)){
         this._showToast('手机号格式不正确')

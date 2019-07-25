@@ -6,6 +6,7 @@ import { deliveryFormSelectByUserid } from "../../utils/getData.js"
 Page({
   data: {
     detailData:{},
+    userid:""
   },
   
   onLoad: function () {
@@ -13,11 +14,20 @@ Page({
   },
 
   onShow:function(){
+    let that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success(res) {
+        that.setData({
+          userid: res.data.id,
+        })
+      }
+    })
     this.getDataDetail()
   },
-
+  
   getDataDetail:function(){
-    let userid = '1';
+    let userid = this.data.userid;
     deliveryFormSelectByUserid(userid)
     .then(
       res=>{

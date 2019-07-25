@@ -8,9 +8,16 @@ Page({
   onLoad: function () {
 
   },
-  onShow(){
-    this._getDatail(1)
+  onShow() {
+    let that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success(res) {
+        that._getDatail(res.data.id)
+      }
+    })
   },
+  
   // shang la
   onPullDownRefresh(){
     let dataId = this.data.dataId;

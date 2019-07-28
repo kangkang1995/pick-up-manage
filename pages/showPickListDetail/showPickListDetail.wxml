@@ -66,7 +66,7 @@
     <view class='bottom-40'>
       <view class="show-list-row">
         <view class="show-list-row-left">车辆停放</view>
-        <view class="show-list-row-right"> <text>{{detailDate.areaName}}</text></view>
+        <view class="show-list-row-right"> <text>{{detailDate.carPark}}</text></view>
       </view>
       <view class="show-list-row">
         <view class="show-list-row-left">预计进场时间</view>

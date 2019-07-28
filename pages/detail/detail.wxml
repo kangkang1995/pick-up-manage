@@ -3,7 +3,7 @@
     <view class="row-box print-row">
       <view class="row-left">提货口</view>
       <view class="row-right"> 
-        <text class='row-right-text'>{{detailData.areaName}}</text>
+        <text class='row-right-text'>{{detailDate.carPark}}</text>
       </view>
     </view>
     

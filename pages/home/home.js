@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-import { deliveryFormAdd } from "../../utils/getData.js"
+import { deliveryFormAdd, wxUserCode, wxRefreshUserInfo } from "../../utils/getData.js"
 
 Page({
   data: {
@@ -23,11 +23,43 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success(res) {
-        that.setData({
-          userid: res.data.id,
-        })
+        if (!res.data){
+        }else{
+          that.setData({
+            userid: res.data.id,
+          })
+          wxRefreshUserInfo(res.data.id)
+            .then(
+              res => {
+                wx.removeStorage({
+                  key: 'userInfo',
+                });
+                wx.setStorage({
+                  key: "userInfo",
+                  data: res.data.data,
+                })
+                if (res.data.data.type === 0) {
+                  // wx.redirectTo({
+                  //   url: `../home/home`,
+                  // })
+                } else if (res.data.data.type === 1) {
+                  wx.redirectTo({
+                    url: `../gatekeeper/gatekeeper`,
+                  })
+                } else if (res.data.data.type === 2) {
+                  wx.redirectTo({
+                    url: `../showPickList/showPickList`,
+                  })
+                }
+              }
+            )
+        }
+      },
+      fail(err){
+        that._login()
       }
     })
+    
   },
   onLoad: function () {
   },
@@ -185,6 +217,48 @@ Page({
     } else {
       return false;
     }
+  },
+  _login() {
+    let that = this;
+    wx.login({
+      success(res) {
+        wx.removeStorage({
+          key: 'userInfo',
+        });
+        if (res.code) {
+          //发起网络请求
+          wxUserCode(res.code)
+            .then(
+              res => {
+                wx.setStorage({
+                  key: "userInfo",
+                  data: res.data.data,
+                })
+                if (res.data.data.type === 0) {
+                  wx.redirectTo({
+                    // url: `../home/home`,
+                  })
+                } else if (res.data.data.type === 1) {
+                  wx.redirectTo({
+                    url: `../gatekeeper/gatekeeper`,
+                  })
+                } else if (res.data.data.type === 2) {
+                  wx.redirectTo({
+                    url: `../showPickList/showPickList`,
+                  })
+                }
+              }
+            )
+            .catch(
+              err => {
+                that._showToast('登录失败！')
+              }
+            )
+        } else {
+          that._showToast('登录失败！')
+        }
+      }
+    })
   }
   
 })

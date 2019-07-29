@@ -23,9 +23,9 @@ Page({
       scanType: ['barCode', 'qrCode'],
       success(res) {
         that._showToast('成功')
-        that._getData('T001')
+        that._getData(res.result)
         that.setData({
-          datailCode: 'T001',
+          datailCode: res.result,
         })
       },
       fail(err) {

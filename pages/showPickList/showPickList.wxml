@@ -1,4 +1,5 @@
 <view class='pick-list-box'>
+  <header/>
   <view class='pick-list-box-list'
     wx:for="{{detailDate}}" 
     wx:for-index="idx" 

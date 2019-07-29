@@ -1,12 +1,25 @@
 /* component/header/header.wxss */
 .all-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
   width: 100%;
   background-color: #fff;
   height: 100rpx;
-  text-align: center;
+  line-height: 100rpx;
+  font-size: 30rpx;
 }
 
 .all-header-text{
-  font-size: 30rpx;
   color: #505050;
 }
+
+.all-header-img{
+  width:200rpx;
+  height: 50rpx;
+  margin-top: 25rpx;
+  padding-left: 20rpx;
+}
+

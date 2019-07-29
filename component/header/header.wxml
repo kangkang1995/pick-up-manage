@@ -1,6 +1,6 @@
 <!--component/header/header.wxml-->
 <view class='all-header'>
-  <text class='all-header-text'>
-    中远海运空运提货管理系统
-  </text>
+  <image class='all-header-img' src='../../images/logo3.png'></image>
+  <view class='all-header-text'>
+    中远海运空运提货管理系统</view>
 </view>

@@ -1,4 +1,5 @@
 <view class='show-list'>
+  <header/>
   <view class='show-list-box' 
     wx:for="{{detailDate.orders}}" 
     wx:for-index="idx" 

@@ -1,3 +1,6 @@
+page{
+  padding-top: 100rpx;
+}
 .show-list-box{
   padding: 0 20rpx;
 }

@@ -1,4 +1,6 @@
 {
-  "component": true,
-  "usingComponents": {}
+  "navigationBarTitleText": "提货小程序",
+  "usingComponents": {
+    "header": "/component/header/header"
+  }
 }

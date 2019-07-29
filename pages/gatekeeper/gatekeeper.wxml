@@ -1,79 +1,82 @@
-<view class='gatekeeper'>
-  <view class='gatekeeper-box' wx-if="{{isDetailData}}">
-    <!-- 成功 -->
-    <view class='new-box'>
-      <block  wx-if="{{passed}}">
-        <view class='new-box-head'>
-          <view class='new-box-head-icon'>
-            <icon type="success" size="60"/>
+<view >
+  <header/>
+  <view class='gatekeeper'>
+    <view class='gatekeeper-box' wx-if="{{isDetailData}}">
+      <!-- 成功 -->
+      <view class='new-box'>
+        <block  wx-if="{{passed}}">
+          <view class='new-box-head'>
+            <view class='new-box-head-icon'>
+              <icon type="success" size="60"/>
+            </view>
+            <view class='gatekeeper-list-right-row-title'>该车辆已通过提货申请 </view>
           </view>
-          <view class='gatekeeper-list-right-row-title'>该车辆已通过提货申请 </view>
-        </view>
-      </block>
-      <!-- 失败 -->
-      <block  wx-if="{{unsubmitted}}">
-        <view class='new-box-head'>
-          <view class='new-box-head-icon'>
-            <icon type="cancel" size="60"/>
+        </block>
+        <!-- 失败 -->
+        <block  wx-if="{{unsubmitted}}">
+          <view class='new-box-head'>
+            <view class='new-box-head-icon'>
+              <icon type="cancel" size="60"/>
+            </view>
+            <view class='gatekeeper-list-right-row-title'>该车辆未提交提货申请 </view>
           </view>
-          <view class='gatekeeper-list-right-row-title'>该车辆未提交提货申请 </view>
-        </view>
-      </block>
+        </block>
 
 
-      <block  wx-if="{{underReview}}">
-        <view class='new-box-head'>
-          <view class='new-box-head-icon'>
-            <icon type="warn" color="#ff9900" size="60"/>
+        <block  wx-if="{{underReview}}">
+          <view class='new-box-head'>
+            <view class='new-box-head-icon'>
+              <icon type="warn" color="#ff9900" size="60"/>
+            </view>
+            <view class='gatekeeper-list-right-row-title'>该车辆提货申请审核中 </view>
           </view>
-          <view class='gatekeeper-list-right-row-title'>该车辆提货申请审核中 </view>
+        </block>
+        
+        <view class='new-box-cent 
+          wx:for="{{detailData.cars}}" 
+          wx:for-index="idx" 
+          wx:for-item="listItem"
+          wx:key="listItem.index"
+        >
+          <view>
+          车牌号：{{listItem.carNo?listItem.carNo:'暂无'}}
+          </view>
+          <view>
+          车辆吨位：{{listItem.carTons?listItem.carTons:'暂无'}}
+          </view>
         </view>
-      </block>
-      
-      <view class='new-box-cent 
-        wx:for="{{detailData.cars}}" 
-        wx:for-index="idx" 
-        wx:for-item="listItem"
-        wx:key="listItem.index"
-      >
-        <view>
-        车牌号：{{listItem.carNo?listItem.carNo:'暂无'}}
+
+        <view class='new-box-cent 
+          wx-if="{{!detailData.cars}}"
+        >
+          <view>
+          车牌号：{{listItem.carNo?listItem.carNo:'暂无'}}
+          </view>
+          <view>
+          车辆吨位：{{listItem.carTons?listItem.carTons:'暂无'}}
+          </view>
         </view>
-        <view>
-        车辆吨位：{{listItem.carTons?listItem.carTons:'暂无'}}
+
+        <view class='new-box-cent'>
+          <view>
+          停车位置：{{detailData.areaname?detailData.areaname:'暂无'}}
+          </view>
+          <view>
+          提货时间：{{detailData.deliveryTime?detailData.deliveryTime:'暂无'}}
+          </view>
         </view>
       </view>
 
-      <view class='new-box-cent 
-        wx-if="{{!detailData.cars}}"
-      >
-        <view>
-        车牌号：{{listItem.carNo?listItem.carNo:'暂无'}}
-        </view>
-        <view>
-        车辆吨位：{{listItem.carTons?listItem.carTons:'暂无'}}
-        </view>
-      </view>
-
-      <view class='new-box-cent'>
-        <view>
-        停车位置：{{detailData.areaname?detailData.areaname:'暂无'}}
-        </view>
-        <view>
-        提货时间：{{detailData.deliveryTime?detailData.deliveryTime:'暂无'}}
-        </view>
-      </view>
     </view>
 
-  </view>
+    <view>
+      <button class='suregetto' wx-if="{{sureCompass}}" bindtap='_confirmArrive'>确认到达</button>
+      <button class='surepickup' wx-if="{{surePickUp}}" bindtap='_confirmDelivery'>确认提货</button>
+    </view>
 
-  <view>
-    <button class='suregetto' wx-if="{{sureCompass}}" bindtap='_confirmArrive'>确认到达</button>
-    <button class='surepickup' wx-if="{{surePickUp}}" bindtap='_confirmDelivery'>确认提货</button>
-  </view>
-
-  <view class='code-btn' bindtap='_scanCode'>
-      <image class='code-btn-img' src='{{codeSrc}}'></image>
-      点击扫码
+    <view class='code-btn' bindtap='_scanCode'>
+        <image class='code-btn-img' src='{{codeSrc}}'></image>
+        点击扫码
+    </view>
   </view>
 </view>

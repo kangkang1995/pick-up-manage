@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "提货小程序",
-  "usingComponents": {}
+  "usingComponents": {
+    "header": "/component/header/header"
+  }
 }

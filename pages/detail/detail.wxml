@@ -1,4 +1,5 @@
 <view class='detail-box'>
+  <header/>
   <view class='detail-content'>
     <view class="row-box print-row">
       <view class="row-left">提货口</view>

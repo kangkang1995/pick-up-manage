@@ -32,16 +32,28 @@ Page({
             detailDate: res.data.data,
             dataId:id
           })
+          wx.stopPullDownRefresh();
         } else {
           this._showToast(res.data.message)
+          wx.stopPullDownRefresh();
         }
       }
     )
     .catch(
       err => {
-        console.log(err)
+        this._showToast("失败")
+        wx.stopPullDownRefresh();
       }
     )
+  },
+  // 提示
+  _showToast: function (text) {
+    wx.showToast({
+      title: text,
+      icon: 'none',
+      duration: 2000,
+      mask: true
+    })
   },
   _linkDetail(event){
     let id = event.currentTarget.dataset.id;
@@ -53,7 +65,6 @@ Page({
     let timestamp = (new Date()).getTime();    // 当前时间戳
     // 2019 - 07 - 16 13: 51: 40
     let deliveryTime = (new Date(newTime)).getTime();
-    console.log(timestamp - deliveryTime)
     return (timestamp - deliveryTime >= 0)?"司机超时":'未完成' 
   },
 })

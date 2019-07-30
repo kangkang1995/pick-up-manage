@@ -46,7 +46,16 @@ Page({
         console.log(err,'err')
       }
     )
-  }
+  },
+  // 提示
+  _showToast: function (text) {
+    wx.showToast({
+      title: text,
+      icon: 'none',
+      duration: 2000,
+      mask: true
+    })
+  },
 
   
 })

@@ -57,7 +57,7 @@
           </view>
         </view>
 
-        <view class='new-box-cent'>
+        <view class='new-box-cent padding-40'>
           <view>
           停车位置：{{detailData.areaname?detailData.areaname:'暂无'}}
           </view>

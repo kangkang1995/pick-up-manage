@@ -101,3 +101,7 @@ page {
   font-size: 30rpx;
   margin-bottom: 10rpx;
 }
+
+.padding-40{
+  padding-bottom: 40rpx;
+}

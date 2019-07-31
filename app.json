@@ -1,11 +1,10 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/detail/detail",
     "pages/gatekeeper/gatekeeper",
     "pages/showPickList/showPickList",
     "pages/showPickListDetail/showPickListDetail",
-   
-    "pages/detail/detail",
     "pages/index/index",
     "pages/logs/logs"
   ],

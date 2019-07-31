@@ -80,7 +80,8 @@ Page({
     )
     .catch(
       err => {
-        console.log(err, 'err')
+        console.log(err, "err")
+        this._showToast('服务报错')
       }
     )
   },
@@ -106,7 +107,8 @@ Page({
     )
     .catch(
       err => {
-        console.log(err, 'err')
+        console.log(err, "err")
+        this._showToast('服务报错')
       }
     )
   },
@@ -132,7 +134,8 @@ Page({
       )
       .catch(
         err => {
-          console.log(err, 'err')
+          console.log(err, "err")
+          this._showToast('服务报错')
         }
       )
   },

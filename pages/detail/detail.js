@@ -9,25 +9,26 @@ Page({
     userid:""
   },
   
-  onLoad: function () {
-    
+  onLoad: function (option) {
+    let id = option.id;
+    this.getDataDetail(id)
   },
 
   onShow:function(){
     let that = this;
-    wx.getStorage({
-      key: 'userInfo',
-      success(res) {
-        that.setData({
-          userid: res.data.id,
-        })
-      }
-    })
-    this.getDataDetail()
+    // wx.getStorage({
+    //   key: 'userInfo',
+    //   success(res) {
+    //     that.setData({
+    //       userid: res.data.id,
+    //     })
+    //   }
+    // })
+    // that.getDataDetail(res.data.id)
   },
   
-  getDataDetail:function(){
-    let userid = this.data.userid;
+  getDataDetail: function (userid){
+    // let userid = this.data.userid;
     deliveryFormSelectByUserid(userid)
     .then(
       res=>{
@@ -42,8 +43,9 @@ Page({
       }
     )
     .catch(
-      err=>{
-        console.log(err,'err')
+      err => {
+        console.log(err, "err")
+        this._showToast('服务报错')
       }
     )
   },

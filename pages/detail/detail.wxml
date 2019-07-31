@@ -1,23 +1,23 @@
 <view class='detail-box'>
   <header/>
   <view class='detail-content'>
-    <view class="row-box print-row">
+    <view class="row-box print-row" wx:if="{{detailDate.state == 2}}">
       <view class="row-left">提货口</view>
       <view class="row-right"> 
         <text class='row-right-text'>{{detailDate.carPark}}</text>
       </view>
     </view>
     
-    <view class='"home-list'>
+    <view class='"home-list' wx:if="{{detailDate.state == 2}}">
       <view class="row-box">
         <view class="row-left">到达时间</view>
-        <view class="row-right"> <text v-if="{{detailData.orders}}">{{detailData.orders[0].deliveryTime}}</text></view>
+        <view class="row-right"> <text wx:if="{{detailData.orders}}">{{detailData.orders[0].deliveryTime?detailData.orders[0].deliveryTime:"暂无"}}</text></view>
       </view>
 
-      <view class="row-box">
+      <!-- <view class="row-box">
         <view class="row-left">排队序号</view>
         <view class="row-right"> <text>等字段</text></view>
-      </view>
+      </view> -->
     </view>
 
     <view 

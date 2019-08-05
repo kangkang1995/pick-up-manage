@@ -1,14 +1,14 @@
 //index.js
 //获取应用实例
 const app = getApp()
-import { deliveryFormAdd, wxUserCode, wxRefreshUserInfo } from "../../utils/getData.js"
+import { deliveryFormAdd, wxUserCode, wxRefreshUserInfo, deliveryOrderDetail, postDeliverycode } from "../../utils/getData.js"
 
 Page({
   data: {
     selectNumberList: ['2吨', '5吨', '8吨', '10吨', '15吨','15吨以上'], //车辆吨位
     pickUpCode:null, //提货码
     pickUpCodeList: [
-      {value:""}
+      { value: "", deliveryDivideOrders:[]}
     ], //提货码
     dataList:[
       { name: "", phone: null, carNumber: null, unit:null, selectNumberValue: 0},
@@ -28,41 +28,10 @@ Page({
           that.setData({
             userid: res.data.id,
           })
-          wxRefreshUserInfo(res.data.id)
-            .then(
-              res => {
-                wx.removeStorage({
-                  key: 'userInfo',
-                });
-                wx.setStorage({
-                  key: "userInfo",
-                  data: res.data.data,
-                })
-                if (res.data.data.type === 0) {
-                  // wx.redirectTo({
-                  //   url: `../home/home`,
-                  // })
-                } else if (res.data.data.type === 1) {
-                  wx.redirectTo({
-                    url: `../gatekeeper/gatekeeper`,
-                  })
-                } else if (res.data.data.type === 2) {
-                  wx.redirectTo({
-                    url: `../showPickList/showPickList`,
-                  })
-                }
-              }
-            )
-            .catch(
-              err => {
-                console.log(err, "err")
-                this._showToast('服务报错')
-              }
-            )
         }
       },
       fail(err){
-        that._login()
+        // that._login()
       }
     })
     
@@ -103,7 +72,7 @@ Page({
     let pickUpCodeList = JSON.parse(JSON.stringify(this.data.pickUpCodeList));
     let dataList = this.data.dataList;
     if (dataList.length <= 1){
-      pickUpCodeList.push({ value: '' })
+      pickUpCodeList.push({ value: '', deliveryDivideOrders:[] })
       this.setData({
         pickUpCodeList
       })
@@ -176,7 +145,6 @@ Page({
     )
     .catch(
       err=>{
-        console.log(err, "err")
         this._showToast('服务报错')
       }
     )
@@ -189,25 +157,71 @@ Page({
   },
   // 扫码
   _scanCode(event){
-    let index = event.currentTarget.dataset.index;
-    let pickUpCodeList = JSON.parse(JSON.stringify(this.data.pickUpCodeList));
     let that = this;
+    let index = event.currentTarget.dataset.index;
     wx.scanCode({
       onlyFromCamera:true,
       scanType: ['barCode', 'qrCode'],
       success(res){
-        that._showToast('成功')
-        pickUpCodeList[index].value = "";
-        pickUpCodeList[index].value = res.result;
-        that.setData({
-          pickUpCodeList
-        })
+        that._pickUpStatus(res.result, index)
+        
       },
       fail(err){
-        console.log(err, 'err')
+        console.log(err)
       }
     })
   },
+
+  // 扫码判断
+  _pickUpStatus: function (code,index) {
+    let pickUpCodeList = JSON.parse(JSON.stringify(this.data.pickUpCodeList));
+    let that = this;
+    deliveryOrderDetail(code)
+      .then(
+        res => {
+          if (res.data.code === 200) {
+            if (res.data.data.deliveryOrderState === 0) {
+              that._showToast('成功')
+              pickUpCodeList[index].value = "";
+              pickUpCodeList[index].value = code;
+              pickUpCodeList[index].deliveryDivideOrders = res.data.data.deliveryDivideOrderList;
+              that.setData({
+                showDetail: false,
+                pickUpCodeList
+              })
+            } else{
+              postDeliverycode(code)
+              .then(
+                ress=>{
+                  that.setData({
+                    showDetail: true,
+                    detailData: ress.data.data,
+                  })
+                }
+              )
+              .catch(
+                err=>{
+                  this._showToast('服务报错')
+                }
+              )
+            }
+            
+          } else if (res.data.code === 400) {
+            this._showToast('提货单不存在')
+          }
+          else if (res.data.code != 400 || res.data.code != 200) {
+            this._showToast(res.data.message)
+          }
+        }
+      )
+      .catch(
+        err => {
+          this._showToast('服务报错')
+        }
+      )
+  },
+
+
   // 提示
   _showToast: function (text) {
     wx.showToast({

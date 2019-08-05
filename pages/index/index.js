@@ -19,35 +19,60 @@ Page({
   onLoad: function () {
     
   },
-  onShow(){
+  onShow() {
+    let that = this;
+    setTimeout(function(){
+      that._getLogin()
+    },2000)
+  },
+
+  _getLogin(){
+    let that = this;
     wx.getStorage({
       key: 'userInfo',
       success(res) {
-        wxRefreshUserInfo(res.data.id)
-        .then(
-          res=>{
-            wx.removeStorage({
-              key: 'userInfo',
-            });
-            wx.setStorage({
-              key: "userInfo",
-              data: res.data.data,
-            })
-            if (res.data.data.type === 0) {
-              wx.redirectTo({
-                url: `../home/home`,
-              })
-            } else if (res.data.data.type === 1) {
-              wx.redirectTo({
-                url: `../gatekeeper/gatekeeper`,
-              })
-            } else if (res.data.data.type === 2) {
-              wx.redirectTo({
-                url: `../showPickList/showPickList`,
-              })
-            }
-          }
-        )
+        console.log(res)
+        if (!res.data) {
+          that._login()
+        } else {
+          that.setData({
+            userid: res.data.id,
+          })
+          wxRefreshUserInfo(res.data.id)
+            .then(
+              res => {
+                wx.removeStorage({
+                  key: 'userInfo',
+                });
+                wx.setStorage({
+                  key: "userInfo",
+                  data: res.data.data,
+                })
+                if (res.data.data.type === 0) {
+                  wx.redirectTo({
+                    url: `../home/home`,
+                  })
+                } else if (res.data.data.type === 1) {
+                  wx.redirectTo({
+                    url: `../gatekeeper/gatekeeper`,
+                  })
+                } else if (res.data.data.type === 2) {
+                  wx.redirectTo({
+                    url: `../showPickList/showPickList`,
+                  })
+                }
+              }
+            )
+            .catch(
+              err => {
+                this._showToast('服务报错')
+              }
+            )
+        }
+      },
+      fail(err) {
+        console.log('111')
+        that._login()
       }
     })
   },

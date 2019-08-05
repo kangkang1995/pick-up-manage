@@ -30,3 +30,7 @@ export const deliveryFormGetdetail = (formid) => service('/delivery/form/getdeta
 
 // 完成备货
 export const deliveryFormStock = (formid) => service('/delivery/form/stock?formid=' + formid, {}, 'POST');
+
+
+// 查询详情
+export const postDeliverycode = (deliverycode) => service('/delivery/form/getinfo?deliverycode=' + deliverycode, {}, 'POST');

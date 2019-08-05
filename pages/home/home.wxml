@@ -7,17 +7,60 @@
       <image bindtap='_scanCode' class='pick-row-img' src='../../images/shaoma.png'></image>
     </view> -->
 
-    <view class="row-box print-row"
+    <view
       wx:for="{{pickUpCodeList}}" 
       wx:for-index="idx" 
       wx:for-item="listItem"
       wx:key="idx"
     >
-      <view class="row-left">提货码{{idx + 1}}</view>
-      <view class="row-right"> 
-        <input placeholder="扫码后带入的提货码" disabled='true' placeholder-class="row-placeholder" value="{{listItem.value}}" /> 
-        <image bindtap='_scanCode' data-index="{{idx}}" class='pick-row-img' src='../../images/shaoma.png'></image>
+      <view  class="row-box print-row">
+        <view class="row-left">提货码</view>
+        <view class="row-right"> 
+          <input placeholder="扫码提货码" disabled='true' placeholder-class="row-placeholder" value="{{listItem.value}}" /> 
+          <image bindtap='_scanCode' data-index="{{idx}}" class='pick-row-img' src='../../images/shaoma.png'></image>
+        </view>
       </view>
+      
+      <view>
+        <view class="home-list" 
+            wx:for="{{listItem.deliveryDivideOrders}}" 
+            wx:for-index="idx" 
+            wx:for-item="newListItem"
+            wx:key="newListItem.id"
+          >
+            <view class="row-box">
+              <view class="row-left">查询编号</view>
+              <view class="row-right"> <text>{{newListItem.queryCode}}</text></view>
+            </view>
+
+            <view class="row-box">
+              <view class="row-left">总运单号</view>
+              <view class="row-right"> <text>{{newListItem.totalWaybillNo}}</text></view>
+            </view>
+
+            <view class="row-box">
+              <view class="row-left">分运单号</view>
+              <view class="row-right"> <text>{{newListItem.separatelyWaybillNo}}</text></view>
+            </view>
+
+            <view class="row-box">
+              <view class="row-left">件数</view>
+              <view class="row-right"> <text>{{newListItem.number}}</text></view>
+            </view>
+
+            <view class="row-box">
+              <view class="row-left">重量</view>
+              <view class="row-right"> <text>{{newListItem.weight}}</text></view>
+            </view>
+
+            <view class="row-box">
+              <view class="row-left">包装</view>
+              <view class="row-right"> <text>{{newListItem.packing}}</text></view>
+            </view>
+
+          </view>
+      </view>
+
     </view>
 
     <view class='add-box add-print-box' bindtap='_addPrint'>

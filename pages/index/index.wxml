@@ -1,11 +1,9 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-   
-    <button  bindtap="_login"> 点击登录 </button>
-    <block>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="hello-box">
+    <image class="hello-box-img" src='../../images/index.jpg'></image>
+    <view class="hello-box-p">
+      欢迎使用中远海运空运提货管理系统！
+    </view>
   </view>
 </view>

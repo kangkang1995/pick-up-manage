@@ -40,6 +40,11 @@
         </view>
 
         <view class="show-list-row">
+          <view class="show-list-row-left">包装</view>
+          <view class="show-list-row-right"> <text>{{newListItem.packing}}</text></view>
+        </view>
+
+        <view class="show-list-row">
           <view class="show-list-row-left">件数</view>
           <view class="show-list-row-right"> <text>{{newListItem.number}}</text></view>
         </view>
@@ -50,9 +55,10 @@
         </view>
 
         <view class="show-list-row">
-          <view class="show-list-row-left">包装</view>
-          <view class="show-list-row-right"> <text>{{newListItem.packing}}</text></view>
+          <view class="show-list-row-left">库位号</view>
+          <view class="show-list-row-right"> <text>{{newListItem.storageNo}}</text></view>
         </view>
+        
       </view> 
 
 

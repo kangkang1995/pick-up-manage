@@ -1,19 +1,36 @@
-import { deliveryFormByStaffUserId } from "../../utils/getData.js"
+import { deliveryFormByStaffUserId, deliveryFormSelectByUserid  } from "../../utils/getData.js"
 
 Page({
   data: {
     detailDate:[],
     dataId:"",
   },
-  onLoad: function () {
-
+  onLoad: function (option) {
+    let that = this;
+    let id = option.id;
+    if (option.id){
+      this.getDataStatus(id)
+    }else{
+      wx.getStorage({
+        key: 'userInfo',
+        success(res) {
+          that.setData({
+            dataId: res.data.id
+          })
+          that._getDatail(res.data.id)
+        }
+      })
+    }
   },
   onShow() {
     let that = this;
     wx.getStorage({
       key: 'userInfo',
       success(res) {
-        that._getDatail(res.data.id)
+        that.setData({
+          dataId: res.data.id
+        })
+        that._getDatail()
       }
     })
   },
@@ -23,14 +40,37 @@ Page({
     let dataId = this.data.dataId;
     this._getDatail(dataId)
   },
+  getDataStatus(id){
+    deliveryFormSelectByUserid(id)
+      .then(
+        res => {
+          if (res.data.code === 200) {
+            if (res.data.data.state === 3){
+              wx.navigateTo({
+                url: `../showPickListDetail/showPickListDetail?id=${id}`,
+              })
+            }
+            
+          } else {
+            this._showToast(res.data.message)
+          }
+        }
+      )
+      .catch(
+        err => {
+          this._showToast('服务报错')
+        }
+      )
+  },
   _getDatail(id){
-    deliveryFormByStaffUserId(id)
+    let dataId = this.data.dataId; 
+    deliveryFormByStaffUserId(dataId)
     .then(
       res => {
         if (res.data.code === 200) {
           this.setData({
             detailDate: res.data.data,
-            dataId:id
+            // dataId:id
           })
           wx.stopPullDownRefresh();
         } else {

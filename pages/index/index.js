@@ -31,7 +31,6 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success(res) {
-        console.log(res)
         if (!res.data) {
           that._login()
         } else {
@@ -58,7 +57,7 @@ Page({
                   })
                 } else if (res.data.data.type === 2) {
                   wx.redirectTo({
-                    url: `../showPickList/showPickList`,
+                    url: `../showPickList/showPickList?id=${''}`,
                   })
                 }
               }
@@ -71,7 +70,6 @@ Page({
         }
       },
       fail(err) {
-        console.log('111')
         that._login()
       }
     })
@@ -109,14 +107,25 @@ Page({
           )
           .catch(
             err=>{
-              console.log(err)
-              console.log('登录失败！')
+              that._showToast('登录失败！')
             }
           )
         } else {
-          console.log('登录失败！' + res.errMsg)
+          that._showToast('登录失败！')
         }
       }
     })
-  }
+  },
+
+  // 提示
+  _showToast: function (text) {
+    wx.showToast({
+      title: text,
+      icon: 'none',
+      duration: 2000,
+      mask: true
+    })
+  },
+
 })
+

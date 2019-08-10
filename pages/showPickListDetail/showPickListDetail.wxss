@@ -21,9 +21,9 @@ page{
   width: 710rpx;
   height: 80rpx;
   line-height: 78rpx;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; */
   text-align: center;
   font-size: 32rpx;
   border: 1px solid #cccccc;
@@ -31,17 +31,46 @@ page{
 }
 
 .show-list-row-left{
-  width: 220rpx;
+  float: left;
+  width: 210rpx;
   border-right: 1px solid #cccccc;
 }
 
 .show-list-row-right{
-  width: 490rpx;
+  float: left;
+  width: 450rpx;
   overflow:hidden; 
   text-overflow:ellipsis; 
   white-space:nowrap; 
   padding:0 15rpx;
 }
+
+.show-list-row-storageNo{
+  width: 710rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 32rpx;
+  border: 1px solid #cccccc;
+  margin-bottom: -1px;
+  /* min-height: 80rpx; */
+}
+
+.show-list-row-left-storageNo{
+  width: 210rpx;
+  /* min-height: 80rpx; */
+  float: left;
+  
+}
+
+.show-list-row-right-storageNo{
+  min-height: 80rpx;
+  float: left;
+  width: 450rpx;
+  padding:0 15rpx;
+  border-left: 1px solid #cccccc;
+  word-wrap:break-word
+}
+
 
 .bottom-40{
   margin-bottom: 40rpx;

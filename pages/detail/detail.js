@@ -32,7 +32,6 @@ Page({
     deliveryFormSelectByUserid(userid)
     .then(
       res=>{
-        console.log(JSON.stringify(res),'res')
         if (res.data.code === 200) {
           this.setData({
             detailData: res.data.data
@@ -44,7 +43,6 @@ Page({
     )
     .catch(
       err => {
-        console.log(err, "err")
         this._showToast('服务报错')
       }
     )

@@ -9,9 +9,14 @@
     <view class='show-list-title'>
       <text>运单信息</text>
     </view>
-    <view class="show-list-row bottom-40">
+    <view class="show-list-row">
       <view class="show-list-row-left">提货单编号</view>
       <view class="show-list-row-right"> <text>{{listItem.deliveryOrderCode}}</text></view>
+    </view>
+
+    <view class="show-list-row bottom-40">
+      <view class="show-list-row-left">发货员</view>
+      <view class="show-list-row-right"> <text>{{detailDate.staffName}}</text></view>
     </view>
 
     <view
@@ -54,9 +59,10 @@
           <view class="show-list-row-right"> <text>{{newListItem.weight}}</text></view>
         </view>
 
-        <view class="show-list-row">
-          <view class="show-list-row-left">库位号</view>
-          <view class="show-list-row-right"> <text>{{newListItem.storageNo}}</text></view>
+        <view class="show-list-row-storageNo">
+          <view class="show-list-row-left-storageNo">库位号</view>
+          <view class="show-list-row-right-storageNo"> {{newListItem.storageNo}}</view>
+          <view style="clear:both"></view>
         </view>
         
       </view> 

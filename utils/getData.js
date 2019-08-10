@@ -11,7 +11,7 @@ export const deliveryFormAdd = (param) => service('/delivery/form/add', param, '
 export const deliveryFormDetail = (param) => service('/delivery/form/detail', param, 'POST');
 
 // 查询用户 的申请单
-export const deliveryFormSelectByUserid = (userid) => service('/delivery/form/selectByUserid?userid=' + userid, {}, 'POST');
+export const deliveryFormSelectByUserid = (formid) => service('/delivery/form/selectByFormId?formid=' + formid , {}, 'POST');
 
 
 // 门卫扫码

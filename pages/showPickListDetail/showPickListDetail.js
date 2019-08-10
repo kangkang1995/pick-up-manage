@@ -13,7 +13,7 @@ Page({
     deliveryFormGetdetail(id)
     .then(
       res=>{
-        console.log(JSON.stringify(res))
+        // console.log(JSON.stringify(res))
         if (res.data.code === 200) {
           this.setData({
             detailDate: res.data.data,

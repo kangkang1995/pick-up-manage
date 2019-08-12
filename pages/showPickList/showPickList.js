@@ -49,6 +49,16 @@ Page({
               wx.navigateTo({
                 url: `../showPickListDetail/showPickListDetail?id=${id}`,
               })
+            }else{
+              wx.getStorage({
+                key: 'userInfo',
+                success(res) {
+                  that.setData({
+                    dataId: res.data.id
+                  })
+                  that._getDatail()
+                }
+              })
             }
             
           } else {

@@ -45,7 +45,7 @@ Page({
       .then(
         res => {
           if (res.data.code === 200) {
-            if (res.data.data.state === 3){
+            if (res.data.data.stockState === 1){
               wx.navigateTo({
                 url: `../showPickListDetail/showPickListDetail?id=${id}`,
               })

@@ -14,9 +14,18 @@
       <view class="show-list-row-right"> <text>{{listItem.deliveryOrderCode}}</text></view>
     </view>
 
-    <view class="show-list-row bottom-40">
+    <view class="show-list-row">
       <view class="show-list-row-left">发货员</view>
       <view class="show-list-row-right"> <text>{{detailDate.staffName}}</text></view>
+    </view>
+
+    <view class="show-list-row bottom-40">
+      <label class="checkbox" data-checkedid="{{listItem.deliveryOrderCode}}" 
+      data-selectstatus="{{listItem.selectStatus}}"
+      bindtap="checkAllChange">
+        <checkbox value="确认完成" checked="{{listItem.selectStatus}}" 
+        disabled="{{detailDate.stockState != 0}}"/>确认完成
+      </label>
     </view>
 
     <view
@@ -63,6 +72,19 @@
           <view class="show-list-row-left-storageNo">库位号</view>
           <view class="show-list-row-right-storageNo"> {{newListItem.storageNo}}</view>
           <view style="clear:both"></view>
+        </view>
+
+        <view class="show-list-row">
+          <label class="checkbox" 
+            data-parent="{{listItem.deliveryOrderCode}}"
+            data-checkedid="{{newListItem.queryCode}}" 
+            data-selectstatus="{{newListItem.selectStatus}}"
+            bindtap="checkListChange">
+            <checkbox value="确认完成" checked="{{newListItem.selectStatus}}"
+              disabled="{{detailDate.stockState != 0}}"
+            />
+            确认完成
+          </label>
         </view>
         
       </view> 
